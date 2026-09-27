@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choudhary Vedram Degree College | Excellence in Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0a2647',
+                        secondary: '#144272',
+                        accent: '#f2a71b',
+                        gold: '#ffc93c',
+                        ink: '#050b16',
+                        deep: '#0a1424',
+                        teal: '#14b8a6',
+                        violet: '#8b5cf6',
+                        rose: '#f43f5e',
+                        sky: '#38bdf8'
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #050b16;
+            color: #e2e8f0;
+        }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+
+        /* ============ PREMIUM BACKGROUNDS ============ */
+        .bg-mesh {
+            background-color: #050b16;
+            background-image:
+                radial-gradient(at 12% 8%, rgba(20, 66, 114, 0.55) 0px, transparent 45%),
+                radial-gradient(at 88% 12%, rgba(139, 92, 246, 0.28) 0px, transparent 45%),
+                radial-gradient(at 82% 82%, rgba(242, 167, 27, 0.20) 0px, transparent 45%),
+                radial-gradient(at 15% 88%, rgba(20, 184, 166, 0.22) 0px, transparent 45%);
+        }
+        .bg-mesh-alt {
+            background-color: #070f1c;
+            background-image:
+                radial-gradient(at 90% 20%, rgba(56, 189, 248, 0.20) 0px, transparent 45%),
+                radial-gradient(at 10% 70%, rgba(244, 63, 94, 0.18) 0px, transparent 45%),
+                radial-gradient(at 50% 100%, rgba(242, 167, 27, 0.18) 0px, transparent 50%);
+        }
+        .bg-mesh-gold {
+            background-color: #060c17;
+            background-image:
+                radial-gradient(at 80% 0%, rgba(242, 167, 27, 0.24) 0px, transparent 45%),
+                radial-gradient(at 0% 60%, rgba(139, 92, 246, 0.24) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(20, 66, 114, 0.55) 0px, transparent 55%);
+        }
+        .bg-mesh-violet {
+            background-color: #08061a;
+            background-image:
+                radial-gradient(at 20% 10%, rgba(139, 92, 246, 0.35) 0px, transparent 45%),
+                radial-gradient(at 80% 40%, rgba(56, 189, 248, 0.20) 0px, transparent 45%),
+                radial-gradient(at 50% 100%, rgba(244, 63, 94, 0.18) 0px, transparent 50%);
+        }
+
+        .grid-overlay { position: relative; }
+        .grid-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+        }
+
+        /* ============ HERO CAROUSEL ============ */
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 640px;
+            overflow: hidden;
+        }
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+            transform: scale(1.05);
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out, transform 8s ease-out;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .carousel-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            /* background: linear-gradient(135deg,
+                rgba(5, 11, 22, 0.92) 0%,
+                rgba(20, 66, 114, 0.78) 50%,
+                rgba(139, 92, 246, 0.55) 100%); */
+        }
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                rgba(5, 11, 22, 0.98) 0%,
+                rgba(5, 11, 22, 0.6) 30%,
+                transparent 60%);
+            z-index: 1;
+        }
+
+        .carousel-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Carousel Nav Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        .carousel-btn:hover {
+            background: linear-gradient(135deg, #ffc93c, #f2a71b);
+            color: #050b16;
+            border-color: transparent;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 15px 40px -10px rgba(242, 167, 27, 0.8);
+        }
+        .carousel-btn.prev { left: 20px; }
+        .carousel-btn.next { right: 20px; }
+
+        /* Carousel Dots */
+        .carousel-dots {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 12px;
+            padding: 10px 20px;
+            background: rgba(5, 11, 22, 0.5);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .carousel-dot.active {
+            width: 32px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ffc93c, #f2a71b);
+            box-shadow: 0 0 20px rgba(242, 167, 27, 0.6);
+        }
+
+        /* Slide content animation */
+        .slide-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s;
+        }
+        .carousel-slide.active .slide-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============ GLASS ============ */
+        .glass {
+            background: rgba(255, 255, 255, 0.04);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-strong {
+            background: rgba(10, 20, 36, 0.75);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(242, 167, 27, 0.15);
+        }
+
+        /* ============ CARDS ============ */
+        .premium-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1.25rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .premium-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+        }
+        .premium-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(242, 167, 27, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(242, 167, 27, 0.25);
+        }
+
+        .course-card { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
+        .course-card:hover { transform: translateY(-10px); }
+        .course-card:hover .icon-box { transform: rotate(-10deg) scale(1.12); }
+        .course-card .icon-box { transition: all 0.4s ease; }
+
+        .course-maths:hover { border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.3); }
+        .course-bio:hover   { border-color: rgba(20, 184, 166, 0.5); box-shadow: 0 25px 50px -12px rgba(20, 184, 166, 0.3); }
+        .course-com:hover   { border-color: rgba(139, 92, 246, 0.5); box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.3); }
+        .course-bca:hover   { border-color: rgba(244, 63, 94, 0.5);  box-shadow: 0 25px 50px -12px rgba(244, 63, 94, 0.3); }
+        .course-arts:hover  { border-color: rgba(242, 167, 27, 0.5); box-shadow: 0 25px 50px -12px rgba(242, 167, 27, 0.3); }
+
+        /* ============ GRADIENT TEXT ============ */
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #ffc93c 0%, #f2a71b 50%, #ff8c42 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .text-gradient-colorful {
+            background: linear-gradient(120deg, #38bdf8 0%, #8b5cf6 40%, #f43f5e 70%, #f2a71b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #050b16; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f2a71b, #8b5cf6);
+            border-radius: 5px;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
+        }
+        .animate-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+        .animate-bounce-slow { animation: bounce-slow 2s ease-in-out infinite; }
+
+        /* ============ SECTION HEADING ============ */
+        .heading-underline {
+            height: 4px;
+            width: 90px;
+            background: linear-gradient(90deg, #f2a71b, #f43f5e, #8b5cf6);
+            border-radius: 999px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* ============ BUTTONS ============ */
+        .btn-gold {
+            background: linear-gradient(135deg, #ffc93c 0%, #f2a71b 100%);
+            color: #050b16;
+            font-weight: 700;
+            box-shadow: 0 10px 30px -10px rgba(242, 167, 27, 0.6);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px -10px rgba(242, 167, 27, 0.9);
+        }
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+        .btn-gold:hover::before { left: 100%; }
+
+        .btn-ghost {
+            border: 2px solid rgba(255,255,255,0.35);
+            color: #fff;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.05);
+        }
+        .btn-ghost:hover {
+            background: rgba(242, 167, 27, 0.15);
+            border-color: #f2a71b;
+            color: #f2a71b;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile: hide carousel arrows on very small */
+        @media (max-width: 640px) {
+            .carousel-btn { width: 44px; height: 44px; font-size: 14px; }
+            .carousel-btn.prev { left: 10px; }
+            .carousel-btn.next { right: 10px; }
+            .carousel-dots { bottom: 80px; }
+            .hero-carousel { height: 100vh; min-height: 600px; }
+        }
+    </style>
+</head>
+<body class="bg-ink">
+
+    <!-- ============ PRE-NAVBAR ============ -->
+    <div class="hidden md:block bg-ink border-b border-white/5 text-xs md:text-sm py-2.5 relative z-40">
+        <div class="container mx-auto px-4 flex justify-between items-center text-slate-300">
+            <div class="flex space-x-6">
+                <span><i class="fas fa-phone-alt mr-2 text-accent"></i> +91 98765 43210</span>
+                <span><i class="fas fa-envelope mr-2 text-accent"></i> adFfooter
+                    missions@choudharyvedram.edu</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-slate-500">Follow:</span>
+                <a href="#" class="hover:text-accent transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-accent transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-accent transition"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav id="navbar" class="sticky top-0 z-50 glass-strong transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+           <a href="#home" class="flex items-center space-x-2 sm:space-x-3 group">
+    <!-- College Logo Image -->
+    <div class="relative w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl overflow-hidden shadow-lg shadow-accent/30 border border-accent/40 bg-white p-1 transition-transform duration-300 group-hover:scale-105 shrink-0">
+        <img
+            src="https://www.static-contents.youth4work.com/university/Documents/Colleges/collegeLogo/20191223111302.png?v=20191223111302"
+            alt="Choudhary Vedram Degree College Logo"
+            class="w-full h-full object-contain"
+            onerror="this.onerror=null; this.src='https://placehold.co/120x120/0a2647/f2a71b?text=CV';"
+        >
+    </div>
+    <!-- College Name -->
+    <div class="min-w-0">
+        <h1 class="text-base sm:text-lg md:text-xl font-bold text-white leading-tight font-playfair truncate">Choudhary Vedram</h1>
+        <p class="text-[10px] sm:text-[10px] md:text-xs text-accent tracking-widest uppercase">Degree College</p>
+    </div>
+</a>
+
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="#home" class="text-slate-200 hover:text-accent font-medium text-sm uppercase tracking-wide transition">Home</a>
+                <a href="#about" class="text-slate-200 hover:text-accent font-medium text-sm uppercase tracking-wide transition">About</a>
+                <a href="#courses" class="text-slate-200 hover:text-accent font-medium text-sm uppercase tracking-wide transition">Courses</a>
+                <a href="#facilities" class="text-slate-200 hover:text-accent font-medium text-sm uppercase tracking-wide transition">Facilities</a>
+                <a href="#gallery" class="text-slate-200 hover:text-accent font-medium text-sm uppercase tracking-wide transition">Campus</a>
+                <a href="#contact" class="btn-gold px-6 py-2.5 rounded-full text-sm uppercase tracking-wide">
+                    Apply Now <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+            </div>
+
+            <button id="menu-btn" class="lg:hidden text-2xl text-accent w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/5 transition">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-deep/95 backdrop-blur-xl border-t border-white/5 shadow-2xl">
+            <a href="#home" class="block px-5 py-3.5 text-slate-200 hover:text-accent hover:bg-white/5 border-b border-white/5 font-medium transition">Home</a>
+            <a href="#about" class="block px-5 py-3.5 text-slate-200 hover:text-accent hover:bg-white/5 border-b border-white/5 font-medium transition">About</a>
+            <a href="#courses" class="block px-5 py-3.5 text-slate-200 hover:text-accent hover:bg-white/5 border-b border-white/5 font-medium transition">Courses</a>
+            <a href="#facilities" class="block px-5 py-3.5 text-slate-200 hover:text-accent hover:bg-white/5 border-b border-white/5 font-medium transition">Facilities</a>
+            <a href="#gallery" class="block px-5 py-3.5 text-slate-200 hover:text-accent hover:bg-white/5 border-b border-white/5 font-medium transition">Campus</a>
+            <a href="#contact" class="block px-5 py-4 bg-gradient-to-r from-accent to-gold text-ink font-bold text-center">Apply Now →</a>
+        </div>
+    </nav>
+
+    <!-- ============ HERO CAROUSEL ============ -->
+    <section id="home" class="hero-carousel">
+
+        <!-- Slide 1 -->
+        <div class="carousel-slide active">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk3Fs1KN7u-KK24NVcjT8icHa5HK6YJLNfYRnl28q9ct2fBW46biicEaj6hA9oKhu97FwAPxrKELSL3p8PHqsAUzrM2dntGdG6qIrzi-xmW3VChvFVz854O1-AR2xcn4_-KEMLY=s1360-w1360-h1020-rw" alt="College Campus">
+            <div class="carousel-content">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-3xl slide-text">
+                        <span class="glass text-accent border border-accent/30 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider mb-6 inline-flex items-center gap-2">
+                            <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                            Admissions Open 2025-26
+                        </span>
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-extrabold mb-6 leading-[1.1] text-white">
+                            Shaping Minds,<br>
+                            <span class="text-gradient-gold">Building Futures</span>
+                        </h1>
+                        <p class="text-base md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
+                            Welcome to Choudhary Vedram Degree College — where academic excellence meets holistic development and a vision for tomorrow.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#courses" class="btn-gold px-8 py-4 rounded-full font-bold uppercase tracking-wide text-sm flex items-center justify-center">
+                                Explore Programs <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="#contact" class="btn-ghost px-8 py-4 rounded-full font-bold uppercase tracking-wide text-sm flex items-center justify-center">
+                                <i class="fas fa-user-plus mr-2"></i> Take Admission
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnVckAaqD2kApT5wkM2q6mNkMapsTxmFCoIZE1j-79j70LXhQ-NXtm9eiki47RPvC8dGB0_GLMUn47_Hp9LYDNZu2bkoPAGADcuNH-i39UoQd59adyseOEe693UyUjH9QIb30E3SA=s1360-w1360-h1020-rw" alt="Students Learning">
+            <div class="carousel-content">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-3xl slide-text">
+                        <span class="glass text-accent border border-accent/30 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider mb-6 inline-flex items-center gap-2">
+                            <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                            World-Class Education
+                        </span>
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-extrabold mb-6 leading-[1.1] text-white">
+                            Learn Today,<br>
+                            <span class="text-gradient-colorful">Lead Tomorrow</span>
+                        </h1>
+                        <p class="text-base md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
+                            Experience a dynamic learning environment with modern facilities, experienced faculty, and a curriculum designed for real-world success.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#about" class="btn-gold px-8 py-4 rounded-full font-bold uppercase tracking-wide text-sm flex items-center justify-center">
+                                Discover More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="#facilities" class="btn-ghost px-8 py-4 rounded-full font-bold uppercase tracking-wide text-sm flex items-center justify-center">
+                                <i class="fas fa-building mr-2"></i> Our Campus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S5IKew07wvz7B8ZKOrf8bcCu2KHTNWxB4fDm2htRLPtEvP6MKYDaNvusSchNM2QyqrCH0d4BmULUyrPIp-pPwo5pFqtOkChKwfgYgzJlkpNxt_S76FzDfWKQyz5aJCZxvSTxfBfA=s1360-w1360-h1020-rw" alt="College Building">
+            <div class="carousel-content">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-3xl slide-text">
+                        <span class="glass text-accent border border-accent/30 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider mb-6 inline-flex items-center gap-2">
+                            <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                            25+ Years of Excellence
+                        </span>
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-extrabold mb-6 leading-[1.1] text-white">
+                            A Legacy of<br>
+                            <span class="text-gradient-gold">Quality Education</span>
+                        </h1>
+                        <p class="text-base md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
+                            Join a community of 5000+ successful alumni. Our commitment to excellence has shaped generations of leaders and innovators.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#contact" class="btn-gold px-8 py-4 rounded-full font-bold uppercase tracking-wide text-sm flex items-center justify-center">
+                                Apply Now <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="#gallery" class="btn-ghost px-8 py-4 rounded-full font-bold uppercase tracking-wide text-sm flex items-center justify-center">
+                                <i class="fas fa-images mr-2"></i> View Gallery
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="carousel-slide">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QhgsyUmkeBthcoIBGgd9z_lZzau_1ZgnouJ6I2kjYRQnmZEUB2CQkY30WobSTw3XvgmvlM7U_nYHpnsb5DiFnpheX_xzeBh0TTOqsoxVwzWBIjMHgBIPVp8iJ2FRSes2R9Qhsh=s1360-w1360-h1020-rw" alt="Science Lab">
+            <div class="carousel-content">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-3xl slide-text">
+                        <span class="glass text-accent border border-accent/30 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider mb-6 inline-flex items-center gap-2">
+                            <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                            Modern Facilities
+                        </span>
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-extrabold mb-6 leading-[1.1] text-white">
+                            Advanced Labs,<br>
+                            <span class="text-gradient-colorful">Digital Library</span>
+                        </h1>
+                        <p class="text-base md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
+                            State-of-the-art laboratories, high-speed computer centers, and a vast digital library — everything you need to succeed.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#facilities" class="btn-gold px-8 py-4 rounded-full font-bold uppercase tracking-wide text-sm flex items-center justify-center">
+                                Explore Facilities <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="#contact" class="btn-ghost px-8 py-4 rounded-full font-bold uppercase tracking-wide text-sm flex items-center justify-center">
+                                <i class="fas fa-phone mr-2"></i> Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nav Buttons -->
+        <button class="carousel-btn prev" id="prevBtn" aria-label="Previous slide">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" id="nextBtn" aria-label="Next slide">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Dots -->
+        <div class="carousel-dots" id="carouselDots">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+            <div class="carousel-dot" data-index="3"></div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/60 animate-bounce-slow hidden md:block">
+            <i class="fas fa-chevron-down text-xl"></i>
+        </div>
+
+        <!-- Wave divider -->
+        <div class="absolute bottom-0 left-0 right-0 z-[5] pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-auto">
+                <path fill="#050b16" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="py-24 bg-mesh grid-overlay relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-accent/30 via-violet/20 to-teal/20 rounded-3xl blur-2xl opacity-60"></div>
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Sx9UQn7K-p_oV_Qukr-m6LVEcOVjpBbqvxwWBP3DF8rdkd0tw1V7XPCxTvNNEV9SnZ9Miwd6Ewp3WvLRe9lPs5kvAX5iWeeJ1BjD4JQbOk5KAz2XqAA38m3LGouJ6mXMU-uj6a=s1360-w1360-h1020-rw"
+                         alt="College Building"
+                         class="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover border border-white/10">
+                    <div class="absolute -bottom-8 -right-8 glass-strong text-white p-6 rounded-2xl shadow-2xl hidden md:block border border-accent/30">
+                        <h3 class="text-4xl font-bold text-gradient-gold font-playfair">25+</h3>
+                        <p class="text-xs uppercase tracking-wider text-slate-300 mt-1">Years of Excellence</p>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-accent font-bold uppercase tracking-widest text-sm mb-3 block">About Our College</span>
+                    <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-6 leading-tight">
+                        A Legacy of Quality Education <span class="text-gradient-colorful">& Innovation</span>
+                    </h2>
+                    <p class="text-slate-400 leading-relaxed mb-4">
+                        Choudhary Vedram Degree College stands as a beacon of knowledge, dedicated to nurturing intellectual and personal growth since its inception. Located in the heart of the city, we offer a dynamic learning environment that bridges the gap between traditional values and modern education.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed mb-8">
+                        Our commitment is to empower students with critical thinking, creativity, and a deep sense of social responsibility. We take pride in our state-of-the-art infrastructure and a highly experienced faculty who are the true architects of our students' bright futures.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="premium-card p-4 flex items-start space-x-3">
+                            <div class="bg-gradient-to-br from-accent to-gold text-ink p-2.5 rounded-lg shrink-0">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Expert Faculty</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Learn from the best minds.</p>
+                            </div>
+                        </div>
+                        <div class="premium-card p-4 flex items-start space-x-3">
+                            <div class="bg-gradient-to-br from-violet to-rose text-white p-2.5 rounded-lg shrink-0">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Modern Library</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Vast collection of resources.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ COURSES ============ -->
+    <section id="courses" class="py-24 bg-mesh-alt grid-overlay relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold uppercase tracking-widest text-sm mb-3 block">Academic Programs</span>
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-4">
+                    Explore Our <span class="text-gradient-colorful">Courses</span>
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Discover a curriculum designed to challenge, inspire, and prepare you for a successful career in your chosen field.</p>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+                <div class="course-card course-maths premium-card p-8">
+                    <div class="icon-box bg-gradient-to-br from-sky/20 to-sky/5 border border-sky/30 text-sky w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        <i class="fas fa-square-root-variable"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-playfair">B.Sc. Mathematics</h3>
+                    <p class="text-slate-400 mb-6 text-sm leading-relaxed">A rigorous program focusing on advanced analytical skills, calculus, and physics, building a strong foundation for research and tech careers.</p>
+                    <div class="flex justify-between items-center text-sm border-t border-white/10 pt-4">
+                        <span class="text-slate-500"><i class="far fa-clock mr-1"></i> 3 Years</span>
+                        <span class="text-sky font-bold">Full Time</span>
+                    </div>
+                    <a href="#contact" class="block mt-6 text-center bg-sky/10 text-sky border border-sky/30 py-2.5 rounded-xl hover:bg-sky hover:text-ink transition font-semibold text-sm">Apply Now</a>
+                </div>
+
+                <div class="course-card course-bio premium-card p-8">
+                    <div class="icon-box bg-gradient-to-br from-teal/20 to-teal/5 border border-teal/30 text-teal w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-playfair">B.Sc. Biology</h3>
+                    <p class="text-slate-400 mb-6 text-sm leading-relaxed">Explore the wonders of life sciences. Covering Botany and Zoology with extensive laboratory and field research experience.</p>
+                    <div class="flex justify-between items-center text-sm border-t border-white/10 pt-4">
+                        <span class="text-slate-500"><i class="far fa-clock mr-1"></i> 3 Years</span>
+                        <span class="text-teal font-bold">Full Time</span>
+                    </div>
+                    <a href="#contact" class="block mt-6 text-center bg-teal/10 text-teal border border-teal/30 py-2.5 rounded-xl hover:bg-teal hover:text-ink transition font-semibold text-sm">Apply Now</a>
+                </div>
+
+                <div class="course-card course-com premium-card p-8">
+                    <div class="icon-box bg-gradient-to-br from-violet/20 to-violet/5 border border-violet/30 text-violet w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-playfair">Bachelor of Commerce</h3>
+                    <p class="text-slate-400 mb-6 text-sm leading-relaxed">Master the principles of accounting, finance, and business management. The perfect launchpad for corporate and CA careers.</p>
+                    <div class="flex justify-between items-center text-sm border-t border-white/10 pt-4">
+                        <span class="text-slate-500"><i class="far fa-clock mr-1"></i> 3 Years</span>
+                        <span class="text-violet font-bold">Full Time</span>
+                    </div>
+                    <a href="#contact" class="block mt-6 text-center bg-violet/10 text-violet border border-violet/30 py-2.5 rounded-xl hover:bg-violet hover:text-white transition font-semibold text-sm">Apply Now</a>
+                </div>
+
+                <div class="course-card course-bca premium-card p-8">
+                    <div class="icon-box bg-gradient-to-br from-rose/20 to-rose/5 border border-rose/30 text-rose w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-playfair">Bachelor of Comp. App.</h3>
+                    <p class="text-slate-400 mb-6 text-sm leading-relaxed">Step into the IT industry. Learn software engineering, web development, and programming languages from industry experts.</p>
+                    <div class="flex justify-between items-center text-sm border-t border-white/10 pt-4">
+                        <span class="text-slate-500"><i class="far fa-clock mr-1"></i> 3 Years</span>
+                        <span class="text-rose font-bold">Full Time</span>
+                    </div>
+                    <a href="#contact" class="block mt-6 text-center bg-rose/10 text-rose border border-rose/30 py-2.5 rounded-xl hover:bg-rose hover:text-white transition font-semibold text-sm">Apply Now</a>
+                </div>
+
+                <div class="course-card course-arts premium-card p-8">
+                    <div class="icon-box bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/30 text-accent w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                        <i class="fas fa-feather-pointed"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-playfair">Bachelor of Arts</h3>
+                    <p class="text-slate-400 mb-6 text-sm leading-relaxed">A versatile degree focusing on humanities, social sciences, and literature, fostering critical thinking and societal understanding.</p>
+                    <div class="flex justify-between items-center text-sm border-t border-white/10 pt-4">
+                        <span class="text-slate-500"><i class="far fa-clock mr-1"></i> 3 Years</span>
+                        <span class="text-accent font-bold">Full Time</span>
+                    </div>
+                    <a href="#contact" class="block mt-6 text-center bg-accent/10 text-accent border border-accent/30 py-2.5 rounded-xl hover:bg-accent hover:text-ink transition font-semibold text-sm">Apply Now</a>
+                </div>
+
+                <div class="course-card premium-card p-8 flex flex-col justify-center items-center text-center relative overflow-hidden bg-gradient-to-br from-accent/10 via-violet/10 to-teal/10">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl"></div>
+                    <div class="relative">
+                        <i class="fas fa-comments text-5xl text-gradient-gold mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-white font-playfair">Not Sure Which Course?</h3>
+                        <p class="text-slate-400 mb-6 text-sm">Our academic counselors are here to help you find the perfect path for your career.</p>
+                        <a href="#contact" class="btn-gold px-6 py-3 rounded-full text-sm inline-block">Talk to a Counselor</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<!-- ============ FACILITIES ============ -->
+<section id="facilities" class="py-24 bg-mesh-gold grid-overlay relative">
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <span class="text-accent font-bold uppercase tracking-widest text-sm mb-3 block">Campus Life</span>
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-4">
+                World-Class <span class="text-gradient-gold">Facilities</span>
+            </h2>
+            <p class="text-slate-400 max-w-2xl mx-auto">An environment designed to foster learning, innovation, and overall well-being.</p>
+            <div class="heading-underline"></div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- ============ Facility 1: Science Labs ============ -->
+            <div class="premium-card group overflow-hidden">
+                <!-- Image -->
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=1200&auto=format&fit=crop"
+                         alt="Advanced Science Labs"
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#050b16] via-[#050b16]/40 to-transparent"></div>
+                    <!-- Small badge top-right -->
+                    <span class="absolute top-4 right-4 bg-sky/20 backdrop-blur-md border border-sky/40 text-sky text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                        Lab
+                    </span>
+                    <!-- Icon top-left corner -->
+                    <div class="absolute top-4 left-4 w-14 h-14 rounded-2xl bg-gradient-to-br from-sky/40 to-sky/15 backdrop-blur-md border border-sky/50 text-sky flex items-center justify-center text-2xl shadow-lg shadow-sky/30 group-hover:scale-110 transition z-10">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                </div>
+                <!-- Content -->
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white mb-2">Advanced Science Labs</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Fully equipped Physics, Chemistry, and Biology labs for hands-on practical knowledge.</p>
+                    <div class="mt-4 flex items-center gap-2 text-sky text-xs font-semibold uppercase tracking-wider group-hover:gap-3 transition-all">
+                        Explore <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ Facility 2: Library ============ -->
+            <div class="premium-card group overflow-hidden">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1200&auto=format&fit=crop"
+                         alt="Digital Library"
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#050b16] via-[#050b16]/40 to-transparent"></div>
+                    <span class="absolute top-4 right-4 bg-violet/20 backdrop-blur-md border border-violet/40 text-violet text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                        Library
+                    </span>
+                    <div class="absolute top-4 left-4 w-14 h-14 rounded-2xl bg-gradient-to-br from-violet/40 to-violet/15 backdrop-blur-md border border-violet/50 text-violet flex items-center justify-center text-2xl shadow-lg shadow-violet/30 group-hover:scale-110 transition z-10">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white mb-2">Digital Library</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">A vast collection of academic books, national/international journals, and e-resources.</p>
+                    <div class="mt-4 flex items-center gap-2 text-violet text-xs font-semibold uppercase tracking-wider group-hover:gap-3 transition-all">
+                        Explore <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ Facility 3: Computer Center ============ -->
+            <div class="premium-card group overflow-hidden">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://www.m.acharya.ac.in/ait/img/ise6.webp"
+                         alt="Computer Center"
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#050b16] via-[#050b16]/40 to-transparent"></div>
+                    <span class="absolute top-4 right-4 bg-rose/20 backdrop-blur-md border border-rose/40 text-rose text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                        IT Lab
+                    </span>
+                    <div class="absolute top-4 left-4 w-14 h-14 rounded-2xl bg-gradient-to-br from-rose/40 to-rose/15 backdrop-blur-md border border-rose/50 text-rose flex items-center justify-center text-2xl shadow-lg shadow-rose/30 group-hover:scale-110 transition z-10">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white mb-2">Computer Center</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">High-speed internet, modern hardware, and latest software for IT and BCA students.</p>
+                    <div class="mt-4 flex items-center gap-2 text-rose text-xs font-semibold uppercase tracking-wider group-hover:gap-3 transition-all">
+                        Explore <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ Facility 4: Sports Complex ============ -->
+            <div class="premium-card group overflow-hidden">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QgzS9kc2RoTwT2mUj2fulDWJvBLJcvcJs2RPEbN_XJi7_yyjBGiA5t9ISJL_4LpiPp1z6S7lr6EfJwkeeaBG3ADm6CwYJmer25C-Vu1f2YmoTDk866P1RRgkWVJA9uEZOognEN=s1360-w1360-h1020-rw"
+                         alt="Sports Complex"
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#050b16] via-[#050b16]/40 to-transparent"></div>
+                    <span class="absolute top-4 right-4 bg-teal/20 backdrop-blur-md border border-teal/40 text-teal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                        Sports
+                    </span>
+                    <div class="absolute top-4 left-4 w-14 h-14 rounded-2xl bg-gradient-to-br from-teal/40 to-teal/15 backdrop-blur-md border border-teal/50 text-teal flex items-center justify-center text-2xl shadow-lg shadow-teal/30 group-hover:scale-110 transition z-10">
+                        <i class="fas fa-volleyball-ball"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white mb-2">Sports Complex</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Large playgrounds for cricket, football, basketball, and indoor games facilities.</p>
+                    <div class="mt-4 flex items-center gap-2 text-teal text-xs font-semibold uppercase tracking-wider group-hover:gap-3 transition-all">
+                        Explore <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- ============ GALLERY ============ -->
+<section id="gallery" class="py-24 bg-mesh-violet grid-overlay relative">
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-10">
+            <span class="text-accent font-bold uppercase tracking-widest text-sm mb-3 block">Gallery</span>
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-4">
+                Glimpse of Our <span class="text-gradient-colorful">Campus</span>
+            </h2>
+            <p class="text-slate-400 max-w-2xl mx-auto">A visual journey through our campus, classrooms, events, and student life.</p>
+            <div class="heading-underline"></div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="campus">Campus</button>
+            <button class="filter-btn" data-filter="academics">Academics</button>
+            <button class="filter-btn" data-filter="sports">Sports</button>
+            <button class="filter-btn" data-filter="events">Events</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="galleryGrid">
+
+            <!-- 1. Main Campus -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="campus" data-src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlmKsc4AYDOxcJs0006pzg9RhHWGM8Vr0BjK64QMtaqI0SyEk-mUeRSNDTi1rxikgVKThjH1eLlweDdjWgvLK-R6ExJVRT4tEhlYWCHTGmBU5bSpXB98jKJZ0LxFuTooNyfN1v86-wlroM=s1360-w1360-h1020-rw">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlmKsc4AYDOxcJs0006pzg9RhHWGM8Vr0BjK64QMtaqI0SyEk-mUeRSNDTi1rxikgVKThjH1eLlweDdjWgvLK-R6ExJVRT4tEhlYWCHTGmBU5bSpXB98jKJZ0LxFuTooNyfN1v86-wlroM=s1360-w1360-h1020-rw" alt="Main Campus" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Campus</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Main Building</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Library -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="academics" data-src="https://www.acetcbe.edu.in/wp-content/uploads/2024/04/lib-1-scaled.jpg">
+                <img src="https://www.acetcbe.edu.in/wp-content/uploads/2024/04/lib-1-scaled.jpg" alt="Library" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Academics</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Digital Library</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Science Lab -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="academics" data-src="https://www.shutterstock.com/image-photo/generate-image-modern-indian-laboratory-260nw-2756659601.jpg">
+                <img src="https://www.shutterstock.com/image-photo/generate-image-modern-indian-laboratory-260nw-2756659601.jpg" alt="Science Lab" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Academics</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Science Lab</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Sports Ground -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="sports" data-src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmK-1cMglxXq0aO1sb-KRN1KTypkyEDdE9g0tZIYVRx3I3UQ8I1KHzBtE7UYu2bwR5dahShtWlp2Pk0ZLcHeWFdF1w8quCpmcbmb5UtKB0o75ifdPj8BUVh-myXLShOqWtejpytCg=s1360-w1360-h1020-rw">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmK-1cMglxXq0aO1sb-KRN1KTypkyEDdE9g0tZIYVRx3I3UQ8I1KHzBtE7UYu2bwR5dahShtWlp2Pk0ZLcHeWFdF1w8quCpmcbmb5UtKB0o75ifdPj8BUVh-myXLShOqWtejpytCg=s1360-w1360-h1020-rw" alt="Sports Ground" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Sports</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Sports Ground</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Classroom -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="academics" data-src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmEIMqUI7TCphgW-rZMg7hRjQ0MH_REbos0esEdNg_7ywe9AlYBNxMNQIe0Rt3ny0-dxzhghvJ-j6-vxdhaiq2eF9GgSm7gASXuLDkvFUv6h90TCLeMqnAn8O08sGvs_NXW3SQ7zTyV0upD=s1360-w1360-h1020-rw">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmEIMqUI7TCphgW-rZMg7hRjQ0MH_REbos0esEdNg_7ywe9AlYBNxMNQIe0Rt3ny0-dxzhghvJ-j6-vxdhaiq2eF9GgSm7gASXuLDkvFUv6h90TCLeMqnAn8O08sGvs_NXW3SQ7zTyV0upD=s1360-w1360-h1020-rw" alt="Smart Classroom" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Academics</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Smart Classroom</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Computer Lab -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="academics" data-src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop" alt="Computer Lab" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Academics</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Computer Center</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Annual Function -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="events" data-src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TInm8JISI_CojnkMQgItUQdeDU6tQkWgKoah7Uhft3_GaDLMe7iZCSecpfLnKTYeKC7NG8KSXELP366RLUAdZLHbDxYYhyADsHIRb1vqJH22-NxIkA7UtvIcHvsiEXmJZmndkP=s1360-w1360-h1020-rw">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TInm8JISI_CojnkMQgItUQdeDU6tQkWgKoah7Uhft3_GaDLMe7iZCSecpfLnKTYeKC7NG8KSXELP366RLUAdZLHbDxYYhyADsHIRb1vqJH22-NxIkA7UtvIcHvsiEXmJZmndkP=s1360-w1360-h1020-rw" alt="Annual Function" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Events</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Annual Function</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Cultural Fest -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="events" data-src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop" alt="Cultural Fest" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Events</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Cultural Fest</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Library Reading Hall -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="campus" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpnNlQKQoSG5eu8tP0nQmO2j9CT424wRPppIgeNo3tyqOXXh7bNxKJfrg&s=10">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpnNlQKQoSG5eu8tP0nQmO2j9CT424wRPppIgeNo3tyqOXXh7bNxKJfrg&s=10" alt="Reading Hall" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Campus</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Reading Hall</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. Basketball Court -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="sports" data-src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmK-1cMglxXq0aO1sb-KRN1KTypkyEDdE9g0tZIYVRx3I3UQ8I1KHzBtE7UYu2bwR5dahShtWlp2Pk0ZLcHeWFdF1w8quCpmcbmb5UtKB0o75ifdPj8BUVh-myXLShOqWtejpytCg=s1360-w1360-h1020-rw">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmK-1cMglxXq0aO1sb-KRN1KTypkyEDdE9g0tZIYVRx3I3UQ8I1KHzBtE7UYu2bwR5dahShtWlp2Pk0ZLcHeWFdF1w8quCpmcbmb5UtKB0o75ifdPj8BUVh-myXLShOqWtejpytCg=s1360-w1360-h1020-rw" alt="Basketball Court" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Sports</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Basketball Court</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. Graduation Ceremony -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="events" data-src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SwPZzpWa8DZZB3G5parP3VBPj8IiwMlVl_JlPg_5CHA5Khf4sQF_suE5oQjLvylQlQfiCWsTCFZ2AECT1JjUfckKehxetWaUWhdytWb8IR6TZAAFG4Sj883glntrfcIKskU4GQ0A=s1360-w1360-h1020-rw">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SwPZzpWa8DZZB3G5parP3VBPj8IiwMlVl_JlPg_5CHA5Khf4sQF_suE5oQjLvylQlQfiCWsTCFZ2AECT1JjUfckKehxetWaUWhdytWb8IR6TZAAFG4Sj883glntrfcIKskU4GQ0A=s1360-w1360-h1020-rw" alt="Graduation Ceremony" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Events</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Graduation Ceremony</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12. Campus Garden -->
+            <div class="gallery-item group relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer" data-category="campus" data-src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmHx2BBsV3xYmScYvegi7A02K87XB1pdosgM3mwO2B7L40BKPaKLDJm99ip9B3Cy1yyawdCtHZQM4L5TdWLs9SIo3ZycSds6268D4Yeeg53NOB99hZIlRLqJKlP3PGVnyvaNK5N=s1360-w1360-h1020-rw">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmHx2BBsV3xYmScYvegi7A02K87XB1pdosgM3mwO2B7L40BKPaKLDJm99ip9B3Cy1yyawdCtHZQM4L5TdWLs9SIo3ZycSds6268D4Yeeg53NOB99hZIlRLqJKlP3PGVnyvaNK5N=s1360-w1360-h1020-rw" alt="Campus Garden" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+                    <div>
+                        <span class="text-accent text-[10px] font-bold uppercase tracking-wider">Campus</span>
+                        <p class="text-white font-semibold flex items-center gap-2"><i class="fas fa-expand text-accent text-xs"></i> Campus Garden</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ LIGHTBOX MODAL ============ -->
+<div id="lightbox" class="lightbox-overlay">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+        <i class="fas fa-times"></i>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <img id="lightboxImg" src="" alt="Gallery Preview">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<!-- ============ GALLERY STYLES ============ -->
+<style>
+    /* Filter Buttons */
+    .filter-btn {
+        padding: 10px 24px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #cbd5e1;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .filter-btn:hover {
+        color: #f2a71b;
+        border-color: rgba(242, 167, 27, 0.5);
+        background: rgba(242, 167, 27, 0.08);
+        transform: translateY(-2px);
+    }
+    .filter-btn.active {
+        background: linear-gradient(135deg, #ffc93c, #f2a71b);
+        color: #050b16;
+        border-color: transparent;
+        box-shadow: 0 10px 30px -10px rgba(242, 167, 27, 0.7);
+    }
+
+    /* Gallery item fade animation */
+    .gallery-item {
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .gallery-item.hidden-item {
+        opacity: 0;
+        transform: scale(0.9);
+        pointer-events: none;
+        position: absolute;
+        visibility: hidden;
+    }
+
+    /* Lightbox Overlay */
+    .lightbox-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 11, 22, 0.96);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .lightbox-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    #lightboxImg {
+        max-width: 90vw;
+        max-height: 82vh;
+        border-radius: 16px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+        border: 1px solid rgba(242, 167, 27, 0.3);
+        transform: scale(0.92);
+        transition: transform 0.3s ease;
+    }
+    .lightbox-overlay.active #lightboxImg {
+        transform: scale(1);
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+        transition: all 0.3s ease;
+    }
+    .lightbox-close:hover {
+        background: linear-gradient(135deg, #ffc93c, #f2a71b);
+        color: #050b16;
+        transform: rotate(90deg);
+    }
+
+    .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+    .lightbox-nav:hover {
+        background: linear-gradient(135deg, #ffc93c, #f2a71b);
+        color: #050b16;
+        border-color: transparent;
+        box-shadow: 0 15px 40px -10px rgba(242, 167, 27, 0.8);
+    }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+
+    .lightbox-caption {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(242, 167, 27, 0.3);
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+        .lightbox-nav { width: 44px; height: 44px; font-size: 14px; }
+        .lightbox-prev { left: 10px; }
+        .lightbox-next { right: 10px; }
+        .lightbox-close { width: 40px; height: 40px; top: 12px; right: 12px; }
+        .lightbox-caption { font-size: 12px; padding: 8px 16px; }
+        .filter-btn { padding: 8px 16px; font-size: 11px; }
+    }
+</style>
+
+<!-- ============ GALLERY SCRIPTS ============ -->
+<script>
+    (function () {
+        // ============ FILTER FUNCTIONALITY ============
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        item.classList.remove('hidden-item');
+                    } else {
+                        item.classList.add('hidden-item');
+                    }
+                });
+            });
+        });
+
+        // ============ LIGHTBOX ============
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+
+        let currentIndex = 0;
+        let visibleItems = [];
+
+        function updateVisibleItems() {
+            visibleItems = Array.from(galleryItems).filter(item => !item.classList.contains('hidden-item'));
+        }
+
+        function openLightbox(item) {
+            updateVisibleItems();
+            currentIndex = visibleItems.indexOf(item);
+            showLightboxImage(item);
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showLightboxImage(item) {
+            const src = item.getAttribute('data-src');
+            const caption = item.querySelector('p').textContent.trim();
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption;
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextImage() {
+            if (visibleItems.length === 0) return;
+            currentIndex = (currentIndex + 1) % visibleItems.length;
+            showLightboxImage(visibleItems[currentIndex]);
+        }
+
+        function prevImage() {
+            if (visibleItems.length === 0) return;
+            currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+            showLightboxImage(visibleItems[currentIndex]);
+        }
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => openLightbox(item));
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', nextImage);
+        lightboxPrev.addEventListener('click', prevImage);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+    })();
+</script>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="py-24 bg-mesh-alt grid-overlay relative overflow-hidden">
+        <div class="absolute top-10 right-10 w-72 h-72 bg-accent/15 rounded-full blur-3xl animate-glow pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-80 h-80 bg-violet/15 rounded-full blur-3xl animate-glow pointer-events-none" style="animation-delay: 1s;"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-14">
+
+                <div>
+                    <span class="text-accent font-bold uppercase tracking-widest text-sm mb-3 block">Contact Us</span>
+                    <h2 class="text-4xl md:text-5xl font-playfair font-bold mb-6 text-white">
+                        Start Your <span class="text-gradient-gold">Journey Today</span>
+                    </h2>
+                    <p class="text-slate-400 mb-10 leading-relaxed">For admission inquiries, please fill out the form, or reach out to us via the contact details below. Our team is ready to assist you.</p>
+
+                    <ul class="space-y-5">
+                        <li class="premium-card p-5 flex items-start space-x-4">
+                            <div class="bg-gradient-to-br from-accent to-gold text-ink p-3 rounded-xl shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Address</h4>
+                                <p class="text-slate-400 text-sm mt-1">Choudhary Vedram Degree College, Main Road, [City Name], [State] - 123456</p>
+                            </div>
+                        </li>
+                        <li class="premium-card p-5 flex items-start space-x-4">
+                            <div class="bg-gradient-to-br from-sky to-violet text-white p-3 rounded-xl shrink-0">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Phone Number</h4>
+                                <p class="text-slate-400 text-sm mt-1">+91 98765 43210, +91 91234 56789</p>
+                            </div>
+                        </li>
+                        <li class="premium-card p-5 flex items-start space-x-4">
+                            <div class="bg-gradient-to-br from-rose to-accent text-white p-3 rounded-xl shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Email Address</h4>
+                                <p class="text-slate-400 text-sm mt-1">admissions@choudharyvedram.edu</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-strong rounded-3xl p-8 shadow-2xl border border-accent/20 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
+                    <div class="relative">
+                        <h3 class="text-2xl font-bold text-white mb-2 font-playfair">Admission Inquiry Form</h3>
+                        <p class="text-slate-400 text-sm mb-6">Fill in the details and our team will reach out shortly.</p>
+
+                        <form action="#" method="POST" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-1.5">Full Name</label>
+                                <input type="text" required placeholder="Enter your full name"
+                                    class="w-full p-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-300 mb-1.5">Email</label>
+                                    <input type="email" required placeholder="Your Email"
+                                        class="w-full p-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-300 mb-1.5">Phone</label>
+                                    <input type="text" required placeholder="Your Number"
+                                        class="w-full p-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-1.5">Course of Interest</label>
+                                <select required class="w-full p-3.5 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition">
+                                    <option value="" class="bg-deep">Select a Course</option>
+                                    <option class="bg-deep">B.Sc. Mathematics</option>
+                                    <option class="bg-deep">B.Sc. Biology</option>
+                                    <option class="bg-deep">B.Com</option>
+                                    <option class="bg-deep">B.C.A.</option>
+                                    <option class="bg-deep">B.A.</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-1.5">Message (Optional)</label>
+                                <textarea rows="3" placeholder="Ask your query..."
+                                    class="w-full p-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="btn-gold w-full p-4 rounded-xl font-bold text-base flex items-center justify-center gap-2">
+                                Submit Application <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-ink border-t border-white/5 pt-16 pb-8 relative overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-4 relative">
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <a href="#home" class="flex items-center space-x-2 sm:space-x-3 group">
+    <!-- College Logo Image -->
+    <div class="relative w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl overflow-hidden shadow-lg shadow-accent/30 border border-accent/40 bg-white p-1 transition-transform duration-300 group-hover:scale-105 shrink-0">
+        <img
+            src="https://www.static-contents.youth4work.com/university/Documents/Colleges/collegeLogo/20191223111302.png?v=20191223111302"
+            alt="Choudhary Vedram Degree College Logo"
+            class="w-full h-full object-contain"
+            onerror="this.onerror=null; this.src='https://placehold.co/120x120/0a2647/f2a71b?text=CV';"
+        >
+    </div>
+    <!-- College Name -->
+    <div class="min-w-0">
+        <h1 class="text-base sm:text-lg md:text-xl font-bold text-white leading-tight font-playfair truncate">Choudhary Vedram</h1>
+        <p class="text-[10px] sm:text-[10px] md:text-xs text-accent tracking-widest uppercase">Degree College</p>
+    </div>
+</a>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">Empowering the youth with knowledge, skills, and values to build a better and brighter future for the nation.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold mb-4 text-accent uppercase tracking-wide">Quick Links</h3>
+                    <ul class="space-y-2.5 text-slate-400 text-sm">
+                        <li><a href="#about" class="hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent/60"></i> About Us</a></li>
+                        <li><a href="#courses" class="hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent/60"></i> Courses</a></li>
+                        <li><a href="#facilities" class="hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent/60"></i> Facilities</a></li>
+                        <li><a href="#contact" class="hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent/60"></i> Admissions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold mb-4 text-accent uppercase tracking-wide">Top Courses</h3>
+                    <ul class="space-y-2.5 text-slate-400 text-sm">
+                        <li><a href="#courses" class="hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent/60"></i> B.Sc. Mathematics</a></li>
+                        <li><a href="#courses" class="hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent/60"></i> B.Sc. Biology</a></li>
+                        <li><a href="#courses" class="hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent/60"></i> B.C.A. (Computers)</a></li>
+                        <li><a href="#courses" class="hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent/60"></i> B.Com & B.A.</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold mb-4 text-accent uppercase tracking-wide">Contact Info</h3>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-map-marker-alt text-accent mt-1"></i> Main Road, City, State - 123456</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-phone text-accent mt-1"></i> +91 98765 43210</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-envelope text-accent mt-1"></i> info@choudharyvedram.edu</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+                 <p class="text-[10px] sm:text-[20px] md:text-xs text-accent tracking-widest uppercase">2025 Choudhary Vedram Degree College. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-ink hover:border-accent transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-ink hover:border-accent transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-ink hover:border-accent transition"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script>
+        // ============ HERO CAROUSEL ============
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+        let autoPlayInterval;
+
+        function goToSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+            });
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            goToSlide((currentSlide + 1) % slides.length);
+        }
+        function prevSlide() {
+            goToSlide((currentSlide - 1 + slides.length) % slides.length);
+        }
+
+        prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
+        nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+                resetAutoPlay();
+            });
+        });
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 5500);
+        }
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+        startAutoPlay();
+
+        // Pause autoplay when tab not visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(autoPlayInterval);
+            } else {
+                startAutoPlay();
+            }
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const carousel = document.querySelector('.hero-carousel');
+
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+                resetAutoPlay();
+            }
+        }, { passive: true });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') { nextSlide(); resetAutoPlay(); }
+            if (e.key === 'ArrowLeft') { prevSlide(); resetAutoPlay(); }
+        });
+
+        // ============ MOBILE MENU ============
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // ============ NAVBAR ON SCROLL ============
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-2xl', 'shadow-accent/5');
+                navbar.style.background = 'rgba(5, 11, 22, 0.92)';
+            } else {
+                navbar.classList.remove('shadow-2xl', 'shadow-accent/5');
+                navbar.style.background = '';
+            }
+        });
+
+        // ============ SMOOTH SCROLL ============
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
